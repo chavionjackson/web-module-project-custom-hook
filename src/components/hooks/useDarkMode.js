@@ -3,7 +3,16 @@ import useLocalStorage from "./useLocalStorage";
 
 const useDarkMode = (initialValue) => {
   const [values, setValues] = useLocalStorage("dark-mode", initialValue);
-  return [values, setValues];
+
+  //Stretch
+  function usePrefersDarkMode() {
+    return ["(prefers-color-scheme: dark)"], [true], false;
+  }
+
+  const prefersDarkMode = usePrefersDarkMode();
+  //
+
+  return [values, setValues, prefersDarkMode];
 };
 
 export default useDarkMode;
